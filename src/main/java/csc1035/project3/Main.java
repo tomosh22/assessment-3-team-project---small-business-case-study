@@ -8,8 +8,8 @@ public class Main {
         while (!exit) {
             // Print the menu options out to the user
             System.out.println("Available options:\n" +
-                    "makepurchase   -   Read the CSV file to an array.\n" +
-                    "checkstock   -   Produce a receipt of the transaction\n" +
+                    "makepurchase   -   Start a new purchase.\n" +
+                    "checkstock     -   Check the current stock in the database\n" +
                     "updatestock    -   Update the stock in the database.\n" +
                     "exit           -   Exit the program.\n");
             System.out.print("Please enter your choice: ");
