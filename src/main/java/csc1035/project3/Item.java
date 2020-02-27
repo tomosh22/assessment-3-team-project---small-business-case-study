@@ -2,35 +2,33 @@ package csc1035.project3;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "Items")
+@Entity(name = "Item")
 public class Item {
 
     @Id
-    @GeneratedValue (strategy = GenerationType.IDENTITY)
-    @Column(name = "ItemId", updatable = false, nullable = false)
-    private final int id;
+    @GeneratedValue (strategy = GenerationType.AUTO)
+    @Column(updatable = false, nullable = false)
+    private int id;
 
-    @Column(name = "Item Name")
+    @Column
     private String name;
 
-    @Column(name = "Category")
+    @Column
     private String category;
 
-    @Column(name = "perishable")
+    @Column
     private boolean perishable;
 
-    @Column(name = "Cost")
-    private float cost;
+    @Column
+    private double cost;
 
-    @Column(name = "Stock")
+    @Column
     private int stock;
 
-    @Column(name = "Sell Price")
-    private float sell_price;
+    @Column
+    private double sell_price;
 
-    public Item(int id, String name, String category, boolean perishable, float cost, int stock, float sell_price){
-        this.id = id;
+    public Item(String name, String category, boolean perishable, double cost, int stock, double sell_price){
         this.name = name;
         this.category = category;
         this.perishable = perishable;
@@ -39,8 +37,7 @@ public class Item {
         this.sell_price = sell_price;
     }
 
-    public Item(int id){
-        this.id = id;
+    public Item(){
     }
 
     public int getId() {
@@ -55,19 +52,19 @@ public class Item {
         this.name = name;
     }
 
-    public float getCost() {
+    public double getCost() {
         return cost;
     }
 
-    public void setCost(float cost){
+    public void setCost(double cost){
         this.cost = cost;
     }
 
-    public float getSell_price() {
+    public double getSell_price() {
         return sell_price;
     }
 
-    public void setSell_price(float sell_price) {
+    public void setSell_price(double sell_price) {
         this.sell_price = sell_price;
     }
 
