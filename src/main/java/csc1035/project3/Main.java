@@ -9,19 +9,22 @@ public class Main {
             // Print the menu options out to the user
             System.out.println("Available options:\n" +
                     "makepurchase   -   Read the CSV file to an array.\n" +
-                    "printreceipt   -   Produce a receipt of the transaction\n" +
+                    "checkstock   -   Produce a receipt of the transaction\n" +
                     "updatestock    -   Update the stock in the database.\n" +
                     "exit           -   Exit the program.\n");
-            System.out.println("Please enter your choice: ");
+            System.out.print("Please enter your choice: ");
             String choice = userInput.next();   // stores user menu choice
             switch (choice) {
                 case "exit":
                     exit = true;
-                case "makepruchase":
+                case "makepurchase":
+                    break;
 
-                case "printreceipt":
+                case "checkstock":
+                    break;
 
                 case "updatestock":
+                    break;
             }
 
         }
