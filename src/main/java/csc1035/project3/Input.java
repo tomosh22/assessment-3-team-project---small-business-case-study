@@ -121,7 +121,7 @@ public class Input {
             }
         }
         catch(IOException e){
-            System.out.println("Failed to read file");
+            System.out.println("Failed to read file, incorrect file path or name.");
         }
     }
 }
