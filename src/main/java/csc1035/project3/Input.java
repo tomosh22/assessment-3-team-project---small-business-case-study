@@ -5,14 +5,12 @@ import javax.persistence.*;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 
-public class Input {
-    public static void main(String[] args) {
-        Item i1 = new Item("Gold Ring","Jewellery",false,120.00,4,180.00);
-        //insertEntity(i1);
-        //removeEntity(4);
-        updateEntity(0, 2, "Test", 0.0, false, 0);
-    }
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
+public class Input {
     public static void insertEntity(Item I){
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
@@ -111,6 +109,23 @@ public class Input {
         }
         finally {
             session.close();
+        }
+    }
+
+    public static void readFile(String fileName){
+        String line;
+        try {
+            Scanner scanner = new Scanner(new File(fileName));
+            while(scanner.hasNextLine()) {
+                line = scanner.nextLine();
+                String[] item = line.split(",");
+                Item i = new Item(item[1],item[2], Boolean.parseBoolean(item[3]), Double.parseDouble(item[4]),
+                        Integer.parseInt(item[5]), Double.parseDouble(item[6]));
+                insertEntity(i);
+            }
+        }
+        catch(IOException e){
+            System.out.println("Failed to read file");
         }
     }
 }
