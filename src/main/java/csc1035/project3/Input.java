@@ -1,13 +1,9 @@
 package csc1035.project3;
 
-import javax.persistence.*;
-
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Input {
