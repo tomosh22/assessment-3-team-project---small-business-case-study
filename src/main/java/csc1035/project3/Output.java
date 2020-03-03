@@ -1,55 +1,75 @@
 package csc1035.project3;
-import org.hibernate.HibernateException;
+import org.hibernate.query.*;
 import org.hibernate.Session;
-
-import java.util.Iterator;
 import java.util.List;
 
 public class Output {
     public static void main(String[] args) {
-        getDBCategory();
-        getDBCost();
     }
+
     public static void getDBCategory() {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        try {
-            List items = session.createQuery("FROM Item ").list();
-            for (Iterator<Item> iterator = items.iterator(); iterator.hasNext();){
-                Item nextItem = iterator.next();
-                System.out.println("Category: " + nextItem.getCategory());
-            }
-            session.getTransaction().commit();
-        } catch (HibernateException e) {
-            if (session!=null) session.getTransaction().rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
+
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        Query query = s.createQuery("select i.name, i.category from Item i WHERE i.category = 'Food'");
+        List results = query.list();
+        s.getTransaction().commit();
+        Object[] items = results.toArray();
+        outputResults(items);
     }
-    public static void getDBCost(){
-        Session session = HibernateUtil.getSessionFactory().openSession();
-        session.beginTransaction();
-        try {
-            List items = session.createQuery("FROM Item ").list();
-            for (Iterator<Item> iterator = items.iterator(); iterator.hasNext();){
-                Item nextItem = iterator.next();
-                System.out.println("Cost: " + nextItem.getCost());
-            }
-            session.getTransaction().commit();
-        } catch (HibernateException e) {
-            if (session!=null) session.getTransaction().rollback();
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-    }
-    public static void getDBName(){
+
+
+    public static void getDBCost() {
+
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        Query query = s.createQuery("select i.name, i.cost from Item i");
+        List results = query.list();
+        s.getTransaction().commit();
+        Object[] items = results.toArray();
+        outputResults(items);
+
 
     }
+
+    public static void getDBName() {
+
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        Query query = s.createQuery("select i.name from Item i");
+        List results = query.list();
+        s.getTransaction().commit();
+        Object[] items = results.toArray();
+        outputResults(items);
+    }
+
     public static void getDBSellPrice() {
-
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        Query query = s.createQuery("select i.name, i.sell_price from Item i");
+        List results = query.list();
+        s.getTransaction().commit();
+        Object[] items = results.toArray();
+        outputResults(items);
     }
-    public static void getDBStock(){
+
+    public static void getDBStock() {
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        Query query = s.createQuery("select i.name, i.stock from Item i");
+        List results = query.list();
+        s.getTransaction().commit();
+        Object[] items = results.toArray();
+        outputResults(items);
+    }
+
+    public static void outputResults(Object[] items) {
+        for (int i = 0; i < items.length; i++) {
+            Object[] tmp = (Object[]) items[i];
+            for (int j = 0; j < tmp.length; j++) {
+                System.out.print(tmp[j] + " ");
+            }
+            System.out.println();
+        }
     }
 }
