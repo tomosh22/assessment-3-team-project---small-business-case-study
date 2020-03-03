@@ -18,7 +18,6 @@ public class Output {
         outputResults(items);   //Pass object array storing results to be outputted
     }
 
-
     public static void getDBCost() {
 
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -28,8 +27,6 @@ public class Output {
         s.getTransaction().commit();
         Object[] items = results.toArray();
         outputResults(items);
-
-
     }
 
     public static void getDBName() {
