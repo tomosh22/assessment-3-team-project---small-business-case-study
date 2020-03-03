@@ -9,13 +9,13 @@ public class Output {
 
     public static void getDBCategory() {
 
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
+        Session s = HibernateUtil.getSessionFactory().openSession();    //Create session
+        s.beginTransaction();   //Start transaction
         Query query = s.createQuery("select i.name, i.category from Item i WHERE i.category = 'Food'");
-        List results = query.list();
+        List results = query.list();    //Creates lists of the results from the query
         s.getTransaction().commit();
-        Object[] items = results.toArray();
-        outputResults(items);
+        Object[] items = results.toArray(); //Changes stored results to an array
+        outputResults(items);   //Pass object array storing results to be outputted
     }
 
 
