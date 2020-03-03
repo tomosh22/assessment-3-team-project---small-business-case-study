@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Input {
+    /**
+     * Inserts one entry into the table
+     * @param I passed Item that will be inserted into array
+     */
     public static void insertEntity(Item I){
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
@@ -24,6 +28,10 @@ public class Input {
         }
     }
 
+    /**
+     * Removes a entity from the table using its primary key
+     * @param key primary key of the entity being removed
+     */
     public static void removeEntity(int key){
         Session session = HibernateUtil.getSessionFactory().openSession();
         try{
@@ -42,6 +50,15 @@ public class Input {
         }
     }
 
+    /**
+     * Updates a single cell of one entity in the table
+     * @param column what field is being changed
+     * @param key the key of the entity being updated
+     * @param text String variable if the updated field is a String
+     * @param cost double variable if the updated field is a double
+     * @param perishable boolean variable if the updated field is a boolean
+     * @param num int variable if the updated field is a int
+     */
     public static void updateEntity(int column, int key, String text, double cost, boolean perishable, int num){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Item I = session.get(Item.class, key);
@@ -108,6 +125,10 @@ public class Input {
         }
     }
 
+    /**
+     * Reads a csv file of the Table and adds it to the table
+     * @param fileName the name of the file, with extension, to be read from
+     */
     public static void readFile(String fileName){
         String line;
         try {
