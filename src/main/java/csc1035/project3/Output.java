@@ -18,7 +18,7 @@ public class Output {
         return items; // Return object array storing results to be outputted
     }
 
-    public static Object[] getDBCategory(String nameOfItem) {
+    public static Object getDBCategory(String nameOfItem) {
         //This method returns the names and categories of the item passed by parameter
         Session s = HibernateUtil.getSessionFactory().openSession();    //Create session
         s.beginTransaction();   //Start transaction
@@ -27,7 +27,8 @@ public class Output {
         List results = query.list();    //Creates lists of the results from the query
         s.getTransaction().commit();
         Object[] items = results.toArray(); //Changes stored results to an array
-        return items; // Return object array storing results to be outputted
+        Object[] tmp = (Object[]) items[0];
+        return tmp[1];
     }
 
     public static Object[] getAllDBCost() {
@@ -79,7 +80,7 @@ public class Output {
 
     }
 
-    public static Object[] getDBSellPrice(String nameOfItem) {
+    public static Object getDBSellPrice(String nameOfItem) {
         //This method returns the name and sell price of the item passed by parameter.
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
@@ -88,7 +89,8 @@ public class Output {
         List results = query.list();
         s.getTransaction().commit();
         Object[] items = results.toArray();
-        return items;
+        Object[] tmp = (Object[]) items[0];
+        return tmp[1];
 
     }
 
@@ -104,7 +106,7 @@ public class Output {
 
     }
 
-    public static Object[] getDBStock(String nameOfItem) {
+    public static Object getDBStock(String nameOfItem) {
         //This is the same method as selecting all stock, however a parameter can
         //be passed to select the item to show stock for.
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -114,7 +116,8 @@ public class Output {
         List results = query.list();
         s.getTransaction().commit();
         Object[] items = results.toArray();
-        return items;
+        Object[] tmp = (Object[]) items[0];
+        return tmp[1];
 
     }
 
