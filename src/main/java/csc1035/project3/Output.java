@@ -21,7 +21,9 @@ public class Output {
     }
 */
     public static String getDBCategory(String nameOfItem) {
-        //This method returns the names and categories of the item passed by parameter
+
+        //This method returns the category of the item passed by parameter
+
         Session s = HibernateUtil.getSessionFactory().openSession();    //Create session
         s.beginTransaction();   //Start transaction
         Query query = s.createQuery("select i.category from Item i WHERE i.name = :name");
@@ -43,7 +45,9 @@ public class Output {
     }
 */
     public static double getDBCost(String nameOfItem) {
-        //This methods returns the name and cost of the item passed by parameter
+
+        //This methods returns the cost of the item passed by parameter
+
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
         Query query = s.createQuery("select i.name, i.cost from Item i where i.name = :name");
@@ -78,7 +82,9 @@ public class Output {
     }
 */
     public static double getDBSellPrice(String nameOfItem) {
-        //This method returns the name and sell price of the item passed by parameter.
+
+        //This method returns the sell price of the item passed by parameter.
+
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
         Query query = s.createQuery("select i.name, i.sell_price from Item i where i.name = :name");
@@ -103,8 +109,9 @@ public class Output {
     }
 */
     public static int getDBStock(String nameOfItem) {
-        //This is the same method as selecting all stock, however a parameter can
-        //be passed to select the item to show stock for.
+
+        //This method returns the stock of the item passed by parameter.
+
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
         Query query = s.createQuery("select i.name, i.stock from Item i where i.name = :name");
@@ -117,6 +124,9 @@ public class Output {
     }
 
     public static void outputResults(Object[] items) {
+
+        // This method is used to loop through and print the results of a results array
+
         for (int i = 0; i < items.length; i++) {
             Object[] tmp = (Object[]) items[i];
             for (int j = 0; j < tmp.length; j++) {
