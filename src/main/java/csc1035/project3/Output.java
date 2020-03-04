@@ -7,7 +7,7 @@ public class Output {
     public static void main(String[] args) {
     }
 
-    public static void getAllDBCategory() {
+    public static Object[] getAllDBCategory() {
         //This method returns the names and categories of all items in the Item table
         Session s = HibernateUtil.getSessionFactory().openSession();    //Create session
         s.beginTransaction();   //Start transaction
@@ -15,10 +15,10 @@ public class Output {
         List results = query.list();    //Creates lists of the results from the query
         s.getTransaction().commit();
         Object[] items = results.toArray(); //Changes stored results to an array
-        outputResults(items);   //Pass object array storing results to be outputted
+        return items; // Return object array storing results to be outputted
     }
 
-    public static void getDBCategory(String nameOfItem) {
+    public static Object[] getDBCategory(String nameOfItem) {
         //This method returns the names and categories of the item passed by parameter
         Session s = HibernateUtil.getSessionFactory().openSession();    //Create session
         s.beginTransaction();   //Start transaction
@@ -27,10 +27,10 @@ public class Output {
         List results = query.list();    //Creates lists of the results from the query
         s.getTransaction().commit();
         Object[] items = results.toArray(); //Changes stored results to an array
-        outputResults(items);   //Pass object array storing results to be outputted
+        return items; // Return object array storing results to be outputted
     }
 
-    public static void getAllDBCost() {
+    public static Object[] getAllDBCost() {
         //This methods returns the name and cost of all items stored in Item
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
@@ -38,10 +38,11 @@ public class Output {
         List results = query.list();
         s.getTransaction().commit();
         Object[] items = results.toArray();
-        outputResults(items);
+        return items; //
+
     }
 
-    public static void getDBCost(String nameOfItem) {
+    public static Object[] getDBCost(String nameOfItem) {
         //This methods returns the name and cost of the item passed by parameter
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
@@ -50,10 +51,11 @@ public class Output {
         List results = query.list();
         s.getTransaction().commit();
         Object[] items = results.toArray();
-        outputResults(items);
+        return items;
+
     }
 
-    public static void getAllDBName() {
+    public static Object[] getAllDBName() {
         //This method will return the names of all items stored in Item.
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
@@ -61,10 +63,11 @@ public class Output {
         List results = query.list();
         s.getTransaction().commit();
         Object[] items = results.toArray();
-        outputResults(items);
+        return items;
+
     }
 
-    public static void getAllDBSellPrice(){
+    public static Object[] getAllDBSellPrice(){
         //This method returns the name and sell price of all items stored in Items.
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
@@ -72,10 +75,11 @@ public class Output {
         List results = query.list();
         s.getTransaction().commit();
         Object[] items = results.toArray();
-        outputResults(items);
+        return items;
+
     }
 
-    public static void getDBSellPrice(String nameOfItem) {
+    public static Object[] getDBSellPrice(String nameOfItem) {
         //This method returns the name and sell price of the item passed by parameter.
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
@@ -84,10 +88,11 @@ public class Output {
         List results = query.list();
         s.getTransaction().commit();
         Object[] items = results.toArray();
-        outputResults(items);
+        return items;
+
     }
 
-    public static void getAllDBStock() {
+    public static Object[] getAllDBStock() {
         //This method will return the item name and stock of all items.
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
@@ -95,10 +100,11 @@ public class Output {
         List results = query.list();
         s.getTransaction().commit();
         Object[] items = results.toArray();
-        outputResults(items);
+        return items;
+
     }
 
-    public static void getDBStock(String nameOfItem) {
+    public static Object[] getDBStock(String nameOfItem) {
         //This is the same method as selecting all stock, however a parameter can
         //be passed to select the item to show stock for.
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -108,7 +114,8 @@ public class Output {
         List results = query.list();
         s.getTransaction().commit();
         Object[] items = results.toArray();
-        outputResults(items);
+        return items;
+
     }
 
     public static void outputResults(Object[] items) {
