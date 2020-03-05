@@ -8,7 +8,11 @@ public class Output {
 
     }
 
-
+    /**
+     *
+     * @param nameOfItem which is item that they wish to find the stock for
+     * @return the String of the category of the item
+     */
     public static String getDBCategory(String nameOfItem) {
 
         //This method returns the category of the item that is passed by parameter
@@ -31,9 +35,13 @@ public class Output {
         return (String) results.get(0);
     }
 
+    /**
+     *
+     * @param nameOfItem which is item that they wish to find the stock for
+     * @return the integer of the stock of the item
+     */
     public static int getDBStock(String nameOfItem) {
 
-        //This method returns the stock of the item that is passed by parameter.
         // Code is similar to the method for returning category. Follow comments from above.
 
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -48,6 +56,11 @@ public class Output {
         return (int) results.get(0);
     }
 
+    /**
+     *
+     * @param nameOfItem which is item that they wish to find the stock for
+     * @return a double of the cost of the item
+     */
     public static double getDBCost(String nameOfItem) {
 
         //This methods returns the cost of the item passed by parameter
@@ -65,6 +78,11 @@ public class Output {
         return (double) results.get(0);
     }
 
+    /**
+     *
+     * @param nameOfItem which is item that they wish to find the stock for
+     * @return a double of the sell price of the item
+     */
     public static double getDBSellPrice(String nameOfItem) {
 
         //This method returns the sell price of the item passed by parameter.
@@ -82,6 +100,7 @@ public class Output {
         return (double) results.get(0);
     }
 
+    
     public static Object[] getAllDBStock() {
 
         //This method will be used to return the stock of all the items in the Items table.
