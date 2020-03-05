@@ -1,11 +1,22 @@
 package csc1035.project3;
 import org.hibernate.query.*;
 import org.hibernate.Session;
+
+import java.util.Iterator;
 import java.util.List;
 
 public class Output {
     public static void main(String[] args) {
-
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        Query query = s.createQuery("FROM Item");
+        List results = query.getResultList();
+        s.close();
+        Iterator iter = results.iterator();
+        while(iter.hasNext()){
+            Item item = (Item) iter.next();
+            System.out.println(item.getCategory());
+        }
     }
 
 
