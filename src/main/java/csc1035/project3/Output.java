@@ -46,8 +46,6 @@ public class Output {
         // The stock of the named item is returned as an integer.
 
         return (int) results.get(0);
-
-
     }
 
     public static double getDBCost(String nameOfItem) {
@@ -65,7 +63,6 @@ public class Output {
         // The cost of the named item is returned as a double.
 
         return (double) results.get(0);
-
     }
 
     public static double getDBSellPrice(String nameOfItem) {
@@ -83,8 +80,39 @@ public class Output {
         // The sell price of the named item is returned as a double.
 
         return (double) results.get(0);
+    }
 
+    public static Object[] getAllDBStock() {
 
+        //This method will be used to return the stock of all the items in the Items table.
+
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        Query query = s.createQuery("select i.name, i.stock from Item i");
+        List results = query.list();
+        s.getTransaction().commit();
+
+        // The values of the names and stock are added to an array.
+
+        Object[] items = results.toArray();
+
+        // The array is returned. This can be looped through to output all values in the
+        s.close();
+        return items;
+    }
+
+    public static void outputResults(Object[] items) {
+
+        // This method is used to loop through and print the results of a results array
+        // This is most likely to be used for the check stock part of the function
+
+        for (int i = 0; i < items.length; i++) {
+            Object[] tmp = (Object[]) items[i];
+            for (int j = 0; j < tmp.length; j++) {
+                System.out.print(tmp[j] + " ");
+            }
+            System.out.println();
+        }
     }
 
     //The following methods are currently not needed, but may be needed at a later date.
@@ -123,17 +151,6 @@ public class Output {
         return items;
     }
 
-    public static Object[] getAllDBStock() {
-        //This method will return the item name and stock of all items.
-        Session s = HibernateUtil.getSessionFactory().openSession();
-        s.beginTransaction();
-        Query query = s.createQuery("select i.name, i.stock from Item i");
-        List results = query.list();
-        s.getTransaction().commit();
-        Object[] items = results.toArray();
-        return items;
-
-    }
 
     public static Object[] getAllDBCategory() {
         //This method returns the names and categories of all items in the Item table
@@ -148,17 +165,4 @@ public class Output {
     }
 
 */
-
-    public static void outputResults(Object[] items) {
-
-        // This method is used to loop through and print the results of a results array
-
-        for (int i = 0; i < items.length; i++) {
-            Object[] tmp = (Object[]) items[i];
-            for (int j = 0; j < tmp.length; j++) {
-                System.out.print(tmp[j] + " ");
-            }
-            System.out.println();
-        }
-    }
 }
