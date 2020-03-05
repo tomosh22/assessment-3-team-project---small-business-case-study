@@ -11,6 +11,7 @@ public class Main {
                     "makepurchase   -   Start a new purchase.\n" +
                     "checkstock     -   Check the current stock in the database\n" +
                     "updatestock    -   Update the stock in the database.\n" +
+                    "profitmade    -    Calculate profit off a sale.\n"    +
                     "exit           -   Exit the program.\n");
             System.out.print("Please enter your choice: ");
             String choice = userInput.next();   // stores user menu choice
@@ -25,7 +26,11 @@ public class Main {
 
                 case "updatestock":
                     break;
+
+                case "profitmade":
+                    new Profit();
+            }
             }
         }
     }
-}
+
