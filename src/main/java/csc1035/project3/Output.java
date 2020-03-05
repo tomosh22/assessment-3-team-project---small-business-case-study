@@ -14,8 +14,7 @@ public class Output {
      * @return the String of the category of the item
      */
     public static String getDBCategory(String nameOfItem) {
-
-        //This method returns the category of the item that is passed by parameter
+        
         //First creates a session to start the transaction
 
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -63,7 +62,6 @@ public class Output {
      */
     public static double getDBCost(String nameOfItem) {
 
-        //This methods returns the cost of the item passed by parameter
         // Code is similar to the method for returning category. Follow comments from above.
 
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -85,7 +83,6 @@ public class Output {
      */
     public static double getDBSellPrice(String nameOfItem) {
 
-        //This method returns the sell price of the item passed by parameter.
         // Code is similar to the method for returning category. Follow comments from above.
 
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -100,7 +97,7 @@ public class Output {
         return (double) results.get(0);
     }
 
-    
+
     public static Object[] getAllDBStock() {
 
         //This method will be used to return the stock of all the items in the Items table.
