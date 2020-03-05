@@ -9,12 +9,12 @@ public class Output {
     }
 
     /**
-     *
+     * Return the category of the item
      * @param nameOfItem which is item that they wish to find the stock for
      * @return the String of the category of the item
      */
     public static String getDBCategory(String nameOfItem) {
-        
+
         //First creates a session to start the transaction
 
         Session s = HibernateUtil.getSessionFactory().openSession();
@@ -35,7 +35,7 @@ public class Output {
     }
 
     /**
-     *
+     * return the stock of the item
      * @param nameOfItem which is item that they wish to find the stock for
      * @return the integer of the stock of the item
      */
@@ -56,7 +56,7 @@ public class Output {
     }
 
     /**
-     *
+     * return the cost of the item
      * @param nameOfItem which is item that they wish to find the stock for
      * @return a double of the cost of the item
      */
@@ -77,7 +77,7 @@ public class Output {
     }
 
     /**
-     *
+     * return the sell price of the item
      * @param nameOfItem which is item that they wish to find the stock for
      * @return a double of the sell price of the item
      */
