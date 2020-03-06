@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Output {
     public static void main(String[] args) {
-        System.out.println(getDBId("Gold Ring"));
     }
 
     /**
