@@ -8,10 +8,11 @@ import java.util.Scanner;
 import static java.lang.String.valueOf;
 
 public class Transaction {
-    public static void main(String[] args) {
-        purchase();
-    }
 
+    /**
+     * Purchase takes the list of items that have been purchased and compares
+     * costs with how much is paid and then passes to receipt.
+     */
     public static void purchase(){
         double itemCost = 0;
         double paid;
@@ -42,10 +43,7 @@ public class Transaction {
 
             if (paid > itemCost) {
                 change = paid - itemCost;
-                //Need to finish this but realised this would not work here because it would only take off stock for
-                // one item rather than all the items which had been bought!!!!!!!!!!!!!!!!!!!!!
-                //Input.updateEntity();
-
+                changeStock(listItemAndQuantity);
                 System.out.println(change);
                 paidEqualsCost = true;
             }
@@ -62,6 +60,7 @@ public class Transaction {
 
             else if (paid == itemCost) {
                 System.out.println("No change to be given");
+                changeStock(listItemAndQuantity);
                 paidEqualsCost = true;
             }
 
@@ -76,7 +75,29 @@ public class Transaction {
 
     }
 
+    /**
+     * Changes the stock for all the items in the list and deducts the quantity which is bought.
+     * @param listItemAndQuantity List of the items, quantity and cost.
+     */
+    public static void changeStock(List listItemAndQuantity){
+        for (int i = 0; i < listItemAndQuantity.size(); i++) {
+            String itemToBeUpdated = listItemAndQuantity.get(i).toString();
+            String item = itemToBeUpdated.split(",")[0];
+            int quantity = Integer.parseInt(itemToBeUpdated.split(",")[1]);
+            int key = Output.getDBId(item);
+            int stock = Output.getDBStock(item) - quantity;
+            Input.updateEntity(5, key, null, 0, false, stock);
+        }
+    }
+
     //This methods gets all the items which have been purchased and their quantity.
+
+    /**
+     * This method adds the item quantity and cost to a list and will keep getting called
+     * for everything that is being bought.
+     * @param listItemAndQuantity List of the items, quantity and cost.
+     * @return List of the items, quantity and cost.
+     */
 
     public static List itemPurchased(List listItemAndQuantity){
         Scanner input = new Scanner(System.in);
@@ -113,6 +134,13 @@ public class Transaction {
     //Allows the user to make a choice if there is another item which has been purchased. If they mistype or misspell
     // then this can be used for validation so that the user can go back and put in the correct choice.
 
+    /**
+     * Just asks if there is another purchase to be made.
+     * @param input This just scans for user input.
+     * @param listItemAndQuantity List of the items, quantity and cost.
+     * @return List of the items, quantity and cost.
+     */
+
     public static List anotherPurchase(Scanner input, List listItemAndQuantity){
         String choice;
 
@@ -145,6 +173,11 @@ public class Transaction {
     }
 
     //Produces a receipt for the user which could be given to the customer.
+
+    /**
+     * Prints a receipt for the user.
+     * @param listItemAndQuantity List of the items, quantity and cost.
+     */
 
     public static void receipt(List listItemAndQuantity){
         System.out.println("|---------------------+--------------------+---------------------|");
