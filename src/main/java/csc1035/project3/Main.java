@@ -1,6 +1,9 @@
 package csc1035.project3;
 import java.util.Scanner;
 
+// This class has only been used for testing currently. Will probably be deleted later.
+
+/*
 public class Main {
     public static void main(String[] args){
         boolean exit = false;   //Used so that the menu will repeat
@@ -29,3 +32,4 @@ public class Main {
         }
     }
 }
+*/
