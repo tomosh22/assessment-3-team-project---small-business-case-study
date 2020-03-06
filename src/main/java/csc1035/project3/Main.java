@@ -14,6 +14,7 @@ public class Main {
                     "makepurchase   -   Start a new purchase.\n" +
                     "checkstock     -   Check the current stock in the database\n" +
                     "updatestock    -   Update the stock in the database.\n" +
+                    "readfile       -   Read a CSV file into a table.\n" +
                     "exit           -   Exit the program.\n");
             System.out.print("Please enter your choice: ");
             String choice = userInput.next();   // stores user menu choice
@@ -24,9 +25,17 @@ public class Main {
                     break;
 
                 case "checkstock":
+                    Output output = new Output();
+                    output.outputResults(Output.getAllDBStock());
                     break;
 
                 case "updatestock":
+                    break;
+
+                case "readfile":
+                    System.out.print("Please enter the file to use: ");
+                    String fileDirectory = userInput.next();
+                    Input.readFile(fileDirectory);
                     break;
             }
         }
