@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Output {
     public static void main(String[] args) {
-
+        System.out.println(getDBId("Gold Ring"));
     }
 
     /**
@@ -95,6 +95,27 @@ public class Output {
         // The sell price of the named item is returned as a double.
 
         return (double) results.get(0);
+    }
+
+    /**
+     * return the id of the item
+     * @param nameOfItem which is item that they wish to find the stock for
+     * @return an integer of the sell price of the item
+     */
+    public static int getDBId(String nameOfItem) {
+
+        // Code is similar to the method for returning category. Follow comments from above.
+
+        Session s = HibernateUtil.getSessionFactory().openSession();
+        s.beginTransaction();
+        Query query = s.createQuery("select i.id from Item i where i.name = :name");
+        query.setParameter("name", nameOfItem);
+        List results = query.getResultList();
+        s.close();
+
+        // The sell price of the named item is returned as a double.
+
+        return (int) results.get(0);
     }
 
 
