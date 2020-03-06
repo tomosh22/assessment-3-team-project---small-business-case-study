@@ -3,9 +3,9 @@ import java.util.Scanner;
 
 // This class has only been used for testing currently. Will probably be deleted later.
 
-/*
+
 public class Main {
-    public static void main(String[] args){
+    public static void main(String[] args) {
         boolean exit = false;   //Used so that the menu will repeat
         Scanner userInput = new Scanner(System.in);
         while (!exit) {
@@ -32,4 +32,3 @@ public class Main {
         }
     }
 }
-*/
