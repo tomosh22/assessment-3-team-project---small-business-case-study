@@ -1,13 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="e95baaf2-219e-41b7-b8f8-0c6a34910b7a">
+    <data-source source="LOCAL" name="MySQL - csc1035_team41@cs-db.ncl.ac.uk" uuid="5192100f-c8a7-42f9-b4c5-bcd511b92311">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://cs-db.ncl.ac.uk:3306/csc1035_team41</jdbc-url>
+      <driver-properties>
+        <property name="autoReconnect" value="true" />
+        <property name="zeroDateTimeBehavior" value="CONVERT_TO_NULL" />
+        <property name="tinyInt1isBit" value="false" />
+        <property name="characterEncoding" value="utf8" />
+        <property name="characterSetResults" value="utf8" />
+        <property name="yearIsDateType" value="false" />
+      </driver-properties>
+    </data-source>
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="08de3a82-87e7-4c2f-99b4-9b1d2e20c88c">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>Hibernate
 
-H:/University work/Year 1/CSC1035 Portfolio 2/Java Projects/GroupProject3/src/main/resources/hibernate.cfg.xml</remarks>
+H:/CSC1035/Group-Project/src/main/resources/hibernate.cfg.xml</remarks>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://cs-db.ncl.ac.uk/csc1035_team41</jdbc-url>
       <driver-properties>
