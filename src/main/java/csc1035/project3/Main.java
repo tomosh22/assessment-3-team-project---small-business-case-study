@@ -20,7 +20,12 @@ public class Main {
             String choice = userInput.next();   // stores user menu choice
             switch (choice) {
                 case "exit":
+
+                    // This will exit from the program
+
                     exit = true;
+                    break;
+
                 case "makepurchase":
 
                     // This will be used to start a transaction
@@ -47,6 +52,7 @@ public class Main {
                     Input.updateEntity(5, itemID, null, 0, false, newStock);
                     break;
 
+
                 case "readfile":
 
                     // This code will write data from a CSV file to a table
@@ -54,6 +60,9 @@ public class Main {
                     System.out.print("Please enter the file to use: ");
                     String fileDirectory = userInput.next();
                     Input.readFile(fileDirectory);
+                    break;
+
+                default:
                     break;
             }
         }
