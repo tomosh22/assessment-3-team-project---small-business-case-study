@@ -33,13 +33,13 @@ public class Transaction {
             System.out.println(itemCost);
         }
 
-        //If paid is more than cost, print out change and take away from the stock
-
-        System.out.print("How much has the buyer paid.");
-        paid = Double.parseDouble(input.next());
 
         boolean paidEqualsCost = false;
         while(!paidEqualsCost) {
+            System.out.print("How much has the buyer paid.");
+            paid = Double.parseDouble(input.next());
+
+            //If paid is more than cost, print out change and take away from the stock
 
             if (paid > itemCost) {
                 change = paid - itemCost;
