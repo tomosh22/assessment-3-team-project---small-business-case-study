@@ -80,12 +80,18 @@ public class Transaction {
      * @param listItemAndQuantity List of the items, quantity and cost.
      */
     public static void changeStock(List listItemAndQuantity){
+        //For loop for size of array.
         for (int i = 0; i < listItemAndQuantity.size(); i++) {
+            //Makes element in list a string
             String itemToBeUpdated = listItemAndQuantity.get(i).toString();
+            //Splits that element into item and quantity.
             String item = itemToBeUpdated.split(",")[0];
             int quantity = Integer.parseInt(itemToBeUpdated.split(",")[1]);
+            //Gets the items unique value
             int key = Output.getDBId(item);
+            //Gets the new stock by taking away the quantity
             int stock = Output.getDBStock(item) - quantity;
+            //Updates stock.
             Input.updateEntity(5, key, null, 0, false, stock);
         }
     }
