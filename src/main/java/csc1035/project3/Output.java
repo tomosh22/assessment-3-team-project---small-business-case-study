@@ -152,7 +152,6 @@ public class Output {
     }
 
     //The following methods are currently not needed, but may be needed at a later date.
-
 /*
     public static Object[] getAllDBCost() {
         //This methods returns the name and cost of all items stored in Item
@@ -199,6 +198,5 @@ public class Output {
         s.close();
         return items; // Return object array storing results to be outputted
     }
-
 */
 }
