@@ -91,7 +91,7 @@ public class Output {
             query.setParameter("name", nameOfItem);
             results = query.getResultList();
             s.close();
-            return (int) results.get(0);
+            return (double) results.get(0);
         }
         catch(HibernateException e){
             if (s!=null) s.getTransaction().rollback();
@@ -122,7 +122,7 @@ public class Output {
             query.setParameter("name", nameOfItem);
             results = query.getResultList();
             s.close();
-            return (int) results.get(0);
+            return (double) results.get(0);
         }
         catch(HibernateException e){
             if (s!=null) s.getTransaction().rollback();
