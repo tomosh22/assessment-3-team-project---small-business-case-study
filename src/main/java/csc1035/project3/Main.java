@@ -10,11 +10,12 @@ public class Main {
         Scanner userInput = new Scanner(System.in);
         while (!exit) {
             // Print the menu options out to the user
-            System.out.println("Available options:\n" +
+            System.out.println("\nAvailable options:\n" +
                     "makepurchase   -   Start a new purchase.\n" +
                     "checkstock     -   Check the current stock in the database\n" +
                     "updatestock    -   Update the stock in the database.\n" +
                     "readfile       -   Read a CSV file into a table.\n" +
+                    "profit         -   Enter items and quantity to work out profit you will receive.\n" +
                     "exit           -   Exit the program.\n");
             System.out.print("Please enter your choice: ");
             String choice = userInput.next();   // stores user menu choice
@@ -50,6 +51,7 @@ public class Main {
                     System.out.print("Please enter the new stock of the item: ");
                     int newStock = Integer.parseInt(userInput.next());
                     Input.updateEntity(5, itemID, null, 0, false, newStock);
+                    System.out.println("Stock has been updated");
                     break;
 
 
@@ -60,6 +62,15 @@ public class Main {
                     System.out.print("Please enter the file to use: ");
                     String fileDirectory = userInput.next();
                     Input.readFile(fileDirectory);
+                    break;
+
+                case "profit":
+
+                    // This code will run the profit calculator
+
+                    Profit profit = new Profit();
+                    profit.calcProfit();
+
                     break;
 
                 default:
