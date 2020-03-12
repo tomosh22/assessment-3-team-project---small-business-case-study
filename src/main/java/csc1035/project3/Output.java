@@ -1,10 +1,14 @@
 package csc1035.project3;
+import org.hibernate.HibernateException;
 import org.hibernate.query.*;
 import org.hibernate.Session;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class Output {
     public static void main(String[] args) {
+        outputResults(getAllDBStock());
     }
 
     /**
@@ -18,21 +22,25 @@ public class Output {
 
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
+        List results;
 
         // Start a query and save the result to a list
-
-        Query query = s.createQuery("select i.category from Item i WHERE i.name = :name");
-        query.setParameter("name", nameOfItem);
-        List results = query.getResultList();
-
-        // Closes the session
-        s.close();
-
-        // Return the category of the named item as String
-
-        return (String) results.get(0);
+        try {
+            Query query = s.createQuery("select i.category from Item i WHERE i.name = :name");
+            query.setParameter("name", nameOfItem);
+            results = query.getResultList();
+            s.close();
+            return (String) results.get(0);
+        }
+        catch(HibernateException e){
+            if (s!=null) s.getTransaction().rollback();
+            e.printStackTrace();
+            return "";
+        }
+        finally {
+            s.close();
+        }
     }
-
     /**
      * return the stock of the item
      * @param nameOfItem which is item that they wish to find the stock for
@@ -40,18 +48,28 @@ public class Output {
      */
     public static int getDBStock(String nameOfItem) {
 
-        // Code is similar to the method for returning category. Follow comments from above.
+        //First creates a session to start the transaction
 
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
-        Query query = s.createQuery("select i.stock from Item i where i.name = :name");
-        query.setParameter("name", nameOfItem);
-        List results = query.getResultList();
-        s.close();
+        List results;
 
-        // The stock of the named item is returned as an integer.
-
-        return (int) results.get(0);
+        // Start a query and save the result to a list
+        try {
+            Query query = s.createQuery("select i.stock from Item i where i.name = :name");
+            query.setParameter("name", nameOfItem);
+            results = query.getResultList();
+            s.close();
+            return (int) results.get(0);
+        }
+        catch(HibernateException e){
+            if (s!=null) s.getTransaction().rollback();
+            e.printStackTrace();
+            return 0;
+        }
+        finally {
+            s.close();
+        }
     }
 
     /**
@@ -61,18 +79,28 @@ public class Output {
      */
     public static double getDBCost(String nameOfItem) {
 
-        // Code is similar to the method for returning category. Follow comments from above.
+        //First creates a session to start the transaction
 
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
-        Query query = s.createQuery("select i.cost from Item i where i.name = :name");
-        query.setParameter("name", nameOfItem);
-        List results = query.getResultList();
-        s.close();
+        List results;
 
-        // The cost of the named item is returned as a double.
-
-        return (double) results.get(0);
+        // Start a query and save the result to a list
+        try {
+            Query query = s.createQuery("select i.cost from Item i where i.name = :name");
+            query.setParameter("name", nameOfItem);
+            results = query.getResultList();
+            s.close();
+            return (double) results.get(0);
+        }
+        catch(HibernateException e){
+            if (s!=null) s.getTransaction().rollback();
+            e.printStackTrace();
+            return 0;
+        }
+        finally {
+            s.close();
+        }
     }
 
     /**
@@ -82,18 +110,28 @@ public class Output {
      */
     public static double getDBSellPrice(String nameOfItem) {
 
-        // Code is similar to the method for returning category. Follow comments from above.
+        //First creates a session to start the transaction
 
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
-        Query query = s.createQuery("select i.sell_price from Item i where i.name = :name");
-        query.setParameter("name", nameOfItem);
-        List results = query.getResultList();
-        s.close();
+        List results;
 
-        // The sell price of the named item is returned as a double.
-
-        return (double) results.get(0);
+        // Start a query and save the result to a list
+        try {
+            Query query = s.createQuery("select i.sell_price from Item i where i.name = :name");
+            query.setParameter("name", nameOfItem);
+            results = query.getResultList();
+            s.close();
+            return (double) results.get(0);
+        }
+        catch(HibernateException e){
+            if (s!=null) s.getTransaction().rollback();
+            e.printStackTrace();
+            return 0;
+        }
+        finally {
+            s.close();
+        }
     }
 
     /**
@@ -103,20 +141,29 @@ public class Output {
      */
     public static int getDBId(String nameOfItem) {
 
-        // Code is similar to the method for returning category. Follow comments from above.
+        //First creates a session to start the transaction
 
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
-        Query query = s.createQuery("select i.id from Item i where i.name = :name");
-        query.setParameter("name", nameOfItem);
-        List results = query.getResultList();
-        s.close();
+        List results;
 
-        // The sell price of the named item is returned as a double.
-
-        return (int) results.get(0);
+        // Start a query and save the result to a list
+        try {
+            Query query = s.createQuery("select i.id from Item i where i.name = :name");
+            query.setParameter("name", nameOfItem);
+            results = query.getResultList();
+            s.close();
+            return (int) results.get(0);
+        }
+        catch(HibernateException e){
+            if (s!=null) s.getTransaction().rollback();
+            e.printStackTrace();
+            return 0;
+        }
+        finally {
+            s.close();
+        }
     }
-
 
     public static Object[] getAllDBStock() {
 
@@ -124,17 +171,29 @@ public class Output {
 
         Session s = HibernateUtil.getSessionFactory().openSession();
         s.beginTransaction();
-        Query query = s.createQuery("select i.name, i.stock from Item i");
-        List results = query.list();
-        s.getTransaction().commit();
+        Object[] items;
 
-        // The values of the names and stock are added to an array.
+        try {
+            Query query = s.createQuery("select i.name, i.stock from Item i");
+            List results = query.list();
+            s.getTransaction().commit();
+            // The values of the names and stock are added to an array.
 
-        Object[] items = results.toArray();
+            items = results.toArray();
 
-        // The array is returned. This can be looped through to output all values in the
-        s.close();
-        return items;
+            // The array is returned. This can be looped through to output all values in the
+            s.close();
+            return items;
+        }
+        catch(HibernateException e){
+            if (s!=null) s.getTransaction().rollback();
+            e.printStackTrace();
+            Object[] emptyArray = new Object[0];
+            return emptyArray;
+        }
+        finally {
+            s.close();
+        }
     }
 
     public static void outputResults(Object[] items) {
@@ -152,7 +211,6 @@ public class Output {
     }
 
     //The following methods are currently not needed, but may be needed at a later date.
-
 /*
     public static Object[] getAllDBCost() {
         //This methods returns the name and cost of all items stored in Item
@@ -199,6 +257,5 @@ public class Output {
         s.close();
         return items; // Return object array storing results to be outputted
     }
-
 */
 }
