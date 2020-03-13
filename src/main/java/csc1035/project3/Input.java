@@ -54,12 +54,9 @@ public class Input {
      * Updates a single cell of one entity in the table
      * @param column what field is being changed
      * @param key the key of the entity being updated
-     * @param text String variable if the updated field is a String
-     * @param cost double variable if the updated field is a double
-     * @param perishable boolean variable if the updated field is a boolean
-     * @param num int variable if the updated field is a int
+     * @param value
      */
-    public static void updateEntity(int column, int key, String text, double cost, boolean perishable, int num){
+    public static < E > void updateEntity(int column, int key, E value){
         Session session = HibernateUtil.getSessionFactory().openSession();
         Item I = session.get(Item.class, key);
         try {
@@ -68,7 +65,7 @@ public class Input {
                 case (0):
                     session = HibernateUtil.getSessionFactory().openSession();
                     session.beginTransaction();
-                    I.setCategory(text);
+                    I.setCategory(value.toString());
                     session.update(I);
                     session.getTransaction().commit();
                     break;
@@ -76,7 +73,7 @@ public class Input {
                 case (1):
                     session = HibernateUtil.getSessionFactory().openSession();
                     session.beginTransaction();
-                    I.setCost(cost);
+                    I.setCost(Double.parseDouble(value.toString()));
                     session.update(I);
                     session.getTransaction().commit();
                     break;
@@ -84,7 +81,7 @@ public class Input {
                 case (2):
                     session = HibernateUtil.getSessionFactory().openSession();
                     session.beginTransaction();
-                    I.setName(text);
+                    I.setName(value.toString());
                     session.update(I);
                     session.getTransaction().commit();
                     break;
@@ -92,7 +89,7 @@ public class Input {
                 case (3):
                     session = HibernateUtil.getSessionFactory().openSession();
                     session.beginTransaction();
-                    I.setPerishable(perishable);
+                    I.setPerishable(Boolean.parseBoolean(value.toString()));
                     session.update(I);
                     session.getTransaction().commit();
                     break;
@@ -100,7 +97,7 @@ public class Input {
                 case (4):
                     session = HibernateUtil.getSessionFactory().openSession();
                     session.beginTransaction();
-                    I.setSell_price(cost);
+                    I.setSell_price(Double.parseDouble(value.toString()));
                     session.update(I);
                     session.getTransaction().commit();
                     break;
@@ -108,7 +105,7 @@ public class Input {
                 case (5):
                     session = HibernateUtil.getSessionFactory().openSession();
                     session.beginTransaction();
-                    I.setStock(num);
+                    I.setStock(Integer.parseInt(value.toString()));
                     session.update(I);
                     session.getTransaction().commit();
                     break;

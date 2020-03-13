@@ -34,7 +34,7 @@ public class InputTesting {
     public void testUpdateEntity(){
         Item i = new Item("TestName", "TestCategory", false, 15.00, 15, 20.00);
         Input.insertEntity(i);
-        Input.updateEntity(1, Output.getDBId("TestName"), "", 20.00, false, 0);
+        Input.updateEntity(1, Output.getDBId("TestName"), 20.00);
         assert Output.getDBCost("TestName")==20.00;
         Input.removeEntity(Output.getDBId("TestName"));
     }
