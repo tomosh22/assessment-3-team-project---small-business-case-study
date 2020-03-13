@@ -92,7 +92,7 @@ public class Transaction {
             //Gets the new stock by taking away the quantity
             int stock = Output.getDBStock(item) - quantity;
             //Updates stock.
-            Input.updateEntity(5, key, null, 0, false, stock);
+            Input.updateEntity(5, key, stock);
         }
     }
 

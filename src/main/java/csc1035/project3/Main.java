@@ -50,7 +50,7 @@ public class Main {
                     int itemID = Integer.parseInt(userInput.next());
                     System.out.print("Please enter the new stock of the item: ");
                     int newStock = Integer.parseInt(userInput.next());
-                    Input.updateEntity(5, itemID, null, 0, false, newStock);
+                    Input.updateEntity(5, itemID, newStock);
                     System.out.println("Stock has been updated");
                     break;
 
