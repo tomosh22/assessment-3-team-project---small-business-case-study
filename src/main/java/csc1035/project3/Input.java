@@ -54,7 +54,7 @@ public class Input {
      * Updates a single cell of one entity in the table
      * @param column what field is being changed
      * @param key the key of the entity being updated
-     * @param value
+     * @param value generic value of what the cell is being changed to
      */
     public static < E > void updateEntity(int column, int key, E value){
         Session session = HibernateUtil.getSessionFactory().openSession();
